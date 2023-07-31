@@ -1,7 +1,7 @@
+# invoice_app/models.py
 from django.db import models
 
 
-# Create your models here.
 class Invoice(models.Model):
     date = models.DateField()
     invoice_no = models.CharField(max_length=100)
@@ -14,7 +14,7 @@ class Invoice(models.Model):
 class InvoiceDetail(models.Model):
     invoice = models.ForeignKey(
         Invoice, on_delete=models.CASCADE, related_name="details"
-    )
+    )  # Use 'related_name' to specify custom reverse relation
     description = models.CharField(max_length=200)
     quantity = models.PositiveIntegerField()
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
