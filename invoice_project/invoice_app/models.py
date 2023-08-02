@@ -1,10 +1,12 @@
-# invoice_app/models.py
 from django.db import models
+import uuid
 
 
 class Invoice(models.Model):
-    date = models.DateField()
-    invoice_no = models.CharField(max_length=100)
+    date = models.DateField(auto_now_add=True)
+    invoice_no = models.CharField(
+        max_length=100, unique=True, default=uuid.uuid4, editable=False
+    )
     customer_name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -13,8 +15,8 @@ class Invoice(models.Model):
 
 class InvoiceDetail(models.Model):
     invoice = models.ForeignKey(
-        Invoice, on_delete=models.CASCADE, related_name="details"
-    )  # Use 'related_name' to specify custom reverse relation
+        Invoice, on_delete=models.CASCADE, related_name="details", blank=True
+    )
     description = models.CharField(max_length=200)
     quantity = models.PositiveIntegerField()
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)

@@ -1,0 +1,19 @@
+{
+  "date": "2023-07-31",
+  "invoice_no": "INV-001",
+  "customer_name": "John Doe",
+  "details": [
+    {
+      "description": "Product 1",
+      "quantity": 2,
+      "unit_price": "10.50",
+      "price": "21.00"
+    },
+    {
+      "description": "Product 2",
+      "quantity": 3,
+      "unit_price": "5.00",
+      "price": "15.00"
+    }
+  ]
+}
